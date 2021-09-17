@@ -1,0 +1,46 @@
+
+// color
+// $clr-pry-blue: hsl(220, 98%, 61%);
+// $clr-check-background: 
+
+:root{
+
+    // Dark theme colors
+    --color-dark-text: hsl(235, 39%, 85%);
+    --color-dark-text-hover: hsl(236, 32%, 92%);
+    --color-dark-text-deactive: hsl(235, 16%, 42%);
+    --color-dark-list-bg: hsl(237, 14%, 26%);
+    --color-dark-bg: hsl(235, 21%, 11%);
+    --color-dark-hover: hsl(0, 0%, 100%);
+
+      //Light Theme Colors
+  --color-light-text: hsl(235, 19%, 35%);
+  --color-light-text-deactive: hsl(235, 9%, 61%);
+  --color-light-text-hover: hsl(235, 19%, 35%);
+    --color-light-list-bg: hsl(0, 0%, 100%);
+    --color-light-bg: hsl(0, 0%, 95%);
+  --color-light-hover: hsl(0, 0%, 0%);
+
+  //global
+  --color-text-active: hsl(220, 98%, 61%);
+
+
+}
+
+.dark-theme{
+    --color-text: var(--color-dark-text);
+    --color-text-hover: var(--color-dark-text-hover);
+    --color-text-deactive: var(--color-dark-text-deactive);
+    --color-list-bg: var(--color-dark-list-bg);
+    --color-bg: var(--color-dark-bg);
+    --color-hover: var(--color-dark-hover);
+}
+
+.light-theme{
+  --color-text: var(--color-light-text);
+  --color-text-hover: var(--color-light-text-hover);
+  --color-text-deactive: var(--color-light-text-deactive);
+  --color-list-bg: var(--color-light-list-bg);
+  --color-bg: var(--color-light-bg);
+  --color-hover: var(--color-light-hover);
+}
