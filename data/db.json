@@ -1,0 +1,19 @@
+{
+    "todo": [
+        {
+            "id": 1,
+            "content": "fly a plane",
+            "completed": true
+        },
+        {
+            "id": 2,
+            "content": "buy a ferrari",
+            "completed": true
+        },
+        {
+            "id": 3,
+            "content": "run 100km to miami",
+            "completed": false
+        }
+    ]
+}

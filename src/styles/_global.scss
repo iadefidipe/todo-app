@@ -78,10 +78,10 @@ input[type ="checkbox"]{
     display: flex;
     gap: rem(24);
     align-items: center;
+    transition:  background  500ms ease-in-out;
 
     &-text{
-        width: 100%;
-        background-color: red;
+        width: 100%;       
     }
 }
 
