@@ -5,16 +5,15 @@ const Todo = () => {
 
   const [text, setText] = useState('')
   const [data, setData] = useState(null);
+  const [completed, setCompleted] = useState(false)
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:8000/')
-        if (!res.ok) throw new Error('Data not available!')
+        const res = await fetch('http://localhost:8000/todo')
         const data = await res.json()
         setData(data)
-        console.log(data)
 
       }
       catch (err) {
@@ -24,14 +23,26 @@ const Todo = () => {
     }
 
     fetchData()
+
+
   }, []
   )
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(text)
-    setText('')
+
+
+    const todo = { text, completed }
+
+
+
+    fetch('http://localhost:8000/todo/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(todo)
+    })
+
   }
 
 

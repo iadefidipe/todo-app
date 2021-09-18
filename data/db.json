@@ -1,19 +1,39 @@
 {
-    "todo": [
-        {
-            "id": 1,
-            "content": "fly a plane",
-            "completed": true
-        },
-        {
-            "id": 2,
-            "content": "buy a ferrari",
-            "completed": true
-        },
-        {
-            "id": 3,
-            "content": "run 100km to miami",
-            "completed": false
-        }
-    ]
+  "todo": [
+    {
+      "id": 1,
+      "text": "fly a plane",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "text": "buy a ferrari",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "text": "run 100km to miami",
+      "completed": false
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "text": "joel",
+      "completed": false,
+      "id": 9
+    }
+  ]
 }

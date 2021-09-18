@@ -2,14 +2,16 @@
 import Header from './component/Header';
 import Todo from './component/Todo';
 import './styles/App.scss';
-import { useState, useEffect} from 'react';
+// import { useState, useEffect } from 'react';
 
 function App() {
 
-  
 
 
-  
+
+
+
+
 
   return (
     <div className="App dark-mode">
