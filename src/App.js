@@ -1,10 +1,14 @@
 
+import Header from './component/Header';
 import './styles/App.scss';
 
 function App() {
+
   return (
-    <div className="App">
-      
+    <div className="App dark-mode">
+      <div className="main-container">
+        <Header />
+      </div>
     </div>
   );
 }

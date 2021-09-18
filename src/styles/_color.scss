@@ -23,11 +23,10 @@
 
   //global
   --color-text-active: hsl(220, 98%, 61%);
-
-
+  --color-header: hsl(0, 0%, 100%);
 }
 
-.dark-theme{
+.dark-mode{
     --color-text: var(--color-dark-text);
     --color-text-hover: var(--color-dark-text-hover);
     --color-text-deactive: var(--color-dark-text-deactive);
@@ -36,7 +35,7 @@
     --color-hover: var(--color-dark-hover);
 }
 
-.light-theme{
+.light-mode{
   --color-text: var(--color-light-text);
   --color-text-hover: var(--color-light-text-hover);
   --color-text-deactive: var(--color-light-text-deactive);
