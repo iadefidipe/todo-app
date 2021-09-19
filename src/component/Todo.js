@@ -72,6 +72,7 @@ const fetchTodo = async (id) => {
 const handleComplete = async (id) => {
   const todoCompleted = await fetchTodo(id)
   const updatedTodo = { ...todoCompleted, completed: !todoCompleted.completed}
+
   
   const res = await fetch(`http://localhost:8000/todo/${id}`,{
     method: 'PUT',
@@ -88,6 +89,14 @@ const handleComplete = async (id) => {
   setTodos(todos.map((todo) => todo.id === id ? {...todo, completed: !data.completed} : todo ))
   
 };
+
+ const handleDelete = async (id) =>{
+   await fetch (`http://localhost:8000/todo/${id}`,{
+    method: 'DELETE'
+  })
+
+  setTodos( todos.filter((todo) => todo.id !== id))
+ }
 
 
 
@@ -106,7 +115,9 @@ const handleComplete = async (id) => {
           }} />
         </form>
 
-        <TodoList data={todos} handleComplete = {handleComplete} />
+        <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete} />
+
+        
 
 
       </section>
