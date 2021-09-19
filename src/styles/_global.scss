@@ -81,10 +81,37 @@ input[type ="checkbox"]{
     transition:  background  500ms ease-in-out;
 
     &-text{
-        width: 100%;       
+        width: 100%; 
     }
+    
 }
 
+.todo-list{
+    margin-top: rem(20);
+    background-color: var(--color-list-bg);
+    padding: rem(20);
+
+    display: flex;
+    flex-direction: column;
+    gap: rem(30);
+
+
+}
+
+.todo{
+    display: flex;
+    gap:rem(24);
+    align-items: center;
+
+    label{
+        color: var(--color-text);
+    }
+
+    input[type ="checkbox"]:checked ~ label{
+        text-decoration: line-through;
+        color: var(--color-text-deactive);
+    }
+}
 
 
 

@@ -4,7 +4,7 @@ import TodoList from './TodoList';
 const Todo = () => {
 
   const [text, setText] = useState('')
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [completed, setCompleted] = useState(false)
 
   useEffect(() => {
@@ -12,6 +12,7 @@ const Todo = () => {
     const fetchData = async () => {
       try {
         const res = await fetch('http://localhost:8000/todo')
+        if (!res.ok) throw new Error('Could not fetch data!')
         const data = await res.json()
         setData(data)
 
@@ -25,8 +26,13 @@ const Todo = () => {
     fetchData()
 
 
+
+
+
   }, []
   )
+
+
 
 
   const handleSubmit = (e) => {
@@ -41,7 +47,7 @@ const Todo = () => {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(todo)
-    })
+    }).then(() => { setText('') })
 
   }
 
@@ -68,4 +74,4 @@ const Todo = () => {
   )
 }
 
-export default Todo
+export default Todo;
