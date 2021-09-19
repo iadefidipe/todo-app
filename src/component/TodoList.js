@@ -1,8 +1,10 @@
 import React from 'react'
 
-const TodoList = ({ data }) => {
+const TodoList = ({ data, handleComplete  }) => {
 
-    console.log(data)
+    
+
+    
 
 
     return (
@@ -11,7 +13,9 @@ const TodoList = ({ data }) => {
             {data.map(todo => (
                 <div className="todo" key={todo.id}>
 
-                    <input type="checkbox" className="todo-check" id={todo.id} name="check" />
+                    <input type="checkbox" className="todo-check" id={todo.id} name="check" checked={todo.completed === true ? true : false} onChange={() => {
+                        handleComplete(todo.id);
+                    }} />
 
                     <label htmlFor={todo.id}>{todo.text}</label>
 
