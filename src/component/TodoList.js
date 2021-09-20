@@ -24,6 +24,9 @@ const TodoList = ({ data, handleComplete, handleDelete }) => {
                         <img src={deleteIcon} alt="delete-todo" onClick = { () => handleDelete(todo.id)} />
                     </div>
 
+
+                    
+
                 </div>
             ))}
         </div>

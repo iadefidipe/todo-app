@@ -1,9 +1,14 @@
 {
   "todo": [
     {
-      "text": "Buy my mama a car",
+      "text": "ditry pant ",
       "completed": false,
       "id": 1
+    },
+    {
+      "text": "dirty nika",
+      "completed": false,
+      "id": 2
     }
   ]
 }

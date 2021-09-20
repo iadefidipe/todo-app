@@ -1,122 +1,140 @@
+body {
+  font-family: $font-jose;
+  font-size: rem(18);
+  color: var(--color-text);
+  // width: 100vw;
+  // height: 100vh;
+}
 
+.App {
+  // width: 100%;
+  height: 100vh;
+  background: var(--color-bg);
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  display: grid;
+  place-items: center;
+  background-image: url(../asset/images/bg-desktop-dark.jpg);
+  transition: background-image 500ms ease-in-out, background 500ms ease-in-out;
 
-body{
-    font-family: $font-jose;
-    font-size: rem(18);
+  @include breakpoint-down(medium) {
+    background-image: url(../asset/images/bg-mobile-dark.jpg);
+    background-size: 100% 200px;
+  }
+}
+
+.main-container {
+  min-width: rem(540);
+
+  @include breakpoint-down(medium) {
+    min-width: rem(327);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: rem(23);
+  min-height: rem(23);
+  background-color: transparent;
+  border: rem(0.5) solid hsla(0, 0%, 59%, 0.363);
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:checked {
+    transition: 0.5s ease-in-out;
+    background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+
+    &::after {
+      transition: 0.5s ease-in-out;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f00c";
+      font-size: rem(10);
+    }
+  }
+}
+
+.todo-input {
+  margin-top: rem(30);
+  background: var(--color-list-bg);
+  padding: rem(20);
+  border-radius: rem(5);
+  display: flex;
+  gap: rem(24);
+  align-items: center;
+  transition: background 500ms ease-in-out;
+
+  &-text {
+    width: 100%;
+  }
+}
+
+.todo-list {
+  margin-top: rem(20);
+  background-color: var(--color-list-bg);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.todo {
+  display: flex;
+  padding: rem(20);
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--color-boder);
+
+  label {
     color: var(--color-text);
-    // width: 100vw;
-    // height: 100vh;
+  }
 
-}
+  input[type="checkbox"]:checked ~ label {
+    text-decoration: line-through;
+    color: var(--color-text-deactive);
+  }
 
-
-.App{
-    // width: 100%;
-    height: 100vh;
-    background: var(--color-bg);
-    background-size:  100% 300px;
-    background-repeat: no-repeat;
-    display: grid;
-    place-items: center;
-    background-image: url(../asset/images/bg-desktop-dark.jpg);
-    transition: background-image 500ms ease-in-out, background  500ms ease-in-out;
-
-    @include breakpoint-down(medium){
-        background-image: url(../asset/images/bg-mobile-dark.jpg);
-        background-size:  100% 200px;       
-    }
-
-}
-
-.main-container{
-    min-width: rem(540);
-
-    @include breakpoint-down(medium){
-        min-width: rem(327);
-    }
-}
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-input[type ="checkbox"]{
-    appearance: none;
-    -webkit-appearance: none;
-    min-width: rem(23);
-    min-height: rem(23);
-    background-color: transparent;
-    border: rem(0.5) solid hsla(0, 0%, 59%, 0.363);
-    border-radius: 100%;
-    cursor: pointer;
+  &-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    &:checked {
-        transition: 0.5s ease-in-out;
-        background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
-    
-        &::after {
-          transition: 0.5s ease-in-out;
-          font-family: "Font Awesome 5 Free";
-          font-weight: 900;
-          content: "\f00c";
-          font-size: rem(10);
-        }
-    }
-}
-
-
-.todo-input{
-    margin-top: rem(30);
-    background: var(--color-list-bg);
-    padding: rem(20) ;
-    border-radius: rem(5);
-    display: flex;
     gap: rem(24);
-    align-items: center;
-    transition:  background  500ms ease-in-out;
-
-    &-text{
-        width: 100%; 
-    }
-    
+  }
 }
 
-.todo-list{
-    margin-top: rem(20);
-    background-color: var(--color-list-bg);
-    padding: rem(20);
+.todo-filter {
+  background: var(--color-list-bg);
+  display: flex;
+  justify-content: space-between;
+  padding: rem(20);
+  font-size: rem(14);
 
+  h3,
+  p {
+    cursor: pointer;
+    color: var(--color-text);
+  }
+
+  h3:hover {
+    color: var(--color-text-hover);
+  }
+
+  h3:focus {
+    color: var(--color-text-active);
+  }
+
+  .filter {
     display: flex;
-    flex-direction: column;
-    gap: rem(30);
-
-
+    gap: rem(18);
+  }
 }
-
-.todo{
-    display: flex;
-    gap:rem(24);
-    align-items: center;
-
-    label{
-        color: var(--color-text);
-    }
-
-    input[type ="checkbox"]:checked ~ label{
-        text-decoration: line-through;
-        color: var(--color-text-deactive);
-    }
-}
-
-
-
-
-
-
-
-

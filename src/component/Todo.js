@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
 
 const Todo = () => {
@@ -117,7 +118,8 @@ const handleComplete = async (id) => {
 
         <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete} />
 
-        
+        <TodoFilter />
+
 
 
       </section>

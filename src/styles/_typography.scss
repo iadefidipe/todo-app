@@ -1,15 +1,12 @@
 @function rem($size) {
-    $remSize: $size / 16;
-    @return #{$remSize}rem;
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
 }
 
+$font-jose: "Josefin Sans", sans-serif;
 
-$font-jose: 'Josefin Sans', sans-serif;
-
-h1{
-    color: var(--color-header);
-    font-size:  rem(40);
-    letter-spacing: rem(15);
+h1 {
+  color: var(--color-header);
+  font-size: rem(40);
+  letter-spacing: rem(15);
 }
-
-
