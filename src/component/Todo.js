@@ -8,6 +8,10 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
   const [completed, setCompleted] = useState(false)
 
+ 
+  const todoLength = todos.filter( (todo) => todo.completed === false ).length
+  
+
 
   // fetch data on page load
   useEffect(() => {
@@ -32,7 +36,13 @@ const Todo = () => {
   )
 
 
-
+ //TODO: Add && Update notification
+ useEffect(() => {
+  if (todoLength > 0) {
+    const notification = todoLength > 1 ? `Todos` : `Todo`;
+    document.title = ` (${todoLength}) ${notification} `;
+  }
+});
 
 
 //  handles onsubmit for the the todo-input section
@@ -186,7 +196,7 @@ const handleCompleted = () => {
 
         <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete} />
 
-        <TodoFilter handleActive ={handleActive} handleCompleted= {handleCompleted} handleAll= { handleAll} handleClearCompleted = {handleClearCompleted} />
+        <TodoFilter handleActive ={handleActive} handleCompleted= {handleCompleted} handleAll= { handleAll} handleClearCompleted = {handleClearCompleted} todoLength = { todoLength} />
 
 
 
