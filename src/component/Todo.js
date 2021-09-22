@@ -99,6 +99,59 @@ const handleComplete = async (id) => {
   setTodos( todos.filter((todo) => todo.id !== id))
  }
 
+//  const handleClearCompleted = async () => {
+//   const ClearCompleted = todos.filter( (todo) => todo.completed === false)
+
+  
+
+  // const res = await fetch(`http://localhost:8000/todo/${}`,{
+  //   method: 'DELETE',
+  //   headers:{
+  //     'Content-type': 'application/json'
+  //   },
+  //   body: JSON.stringify(ClearCompleted)
+  // }
+  // )
+
+//   const data = await res.json()
+
+//   setTodos(data)
+// }
+
+const handleClearCompleted = () => {
+
+  const ClearCompleted = todos.filter( (todo) => todo.completed === true)
+
+  console.log(ClearCompleted)
+
+  ClearCompleted.forEach( async (todo) =>{
+    await fetch(`http://localhost:8000/todo/${todo.id}`,{
+    method: 'DELETE'}
+  )
+
+  })
+
+  setTodos(todos.filter( (todo) => todo.completed === false ))
+}
+
+//  filters
+
+// const handleAll = () => {
+
+// }
+
+const handleAll = () => {
+  setTodos( todos)
+}
+
+const handleActive = () => {
+  
+}
+
+const handleCompleted = () => {
+  
+}
+
 
 
 
@@ -118,7 +171,7 @@ const handleComplete = async (id) => {
 
         <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete} />
 
-        <TodoFilter />
+        <TodoFilter handleActive ={handleActive} handleCompleted= {handleCompleted} handleAll= { handleAll} handleClearCompleted = {handleClearCompleted} />
 
 
 

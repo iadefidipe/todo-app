@@ -119,11 +119,12 @@ input[type="checkbox"] {
   padding: rem(20);
   font-size: rem(14);
 
-  h3,
-  p {
+
+  h3,p {
     cursor: pointer;
     color: var(--color-text);
   }
+
 
   h3:hover {
     color: var(--color-text-hover);
