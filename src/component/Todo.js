@@ -141,15 +141,30 @@ const handleClearCompleted = () => {
 // }
 
 const handleAll = () => {
-  setTodos( todos)
+  document.querySelectorAll('.todo').forEach( (todoItem) => todoItem.style.display = 'flex')
+
+}
+
+const filterTodoList = (className) => {
+  document.querySelectorAll('.todo').forEach( (todoItem) => {
+    if(todoItem.classList.contains(className)){
+      todoItem.style.display = 'none'
+    }
+    else{
+      todoItem.style.display = 'flex'
+    }
+  }  )
 }
 
 const handleActive = () => {
-  
+  filterTodoList('active')
 }
 
 const handleCompleted = () => {
-  
+
+  filterTodoList('completed')
+ 
+
 }
 
 
