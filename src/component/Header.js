@@ -35,7 +35,7 @@ const Header = () => {
 
  
   useEffect(() => {
-    localStorage.setItem("localode", JSON.stringify(mode));
+    localStorage.setItem("localMode", JSON.stringify(mode))
   });
 
   return (
