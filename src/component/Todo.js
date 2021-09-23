@@ -98,7 +98,7 @@ const handleComplete = async (id) => {
   const updatedTodo = { ...todoCompleted, completed: !todoCompleted.completed}
 
   
-  const res = await fetch(`http://localhost:8000/todo/${id}`,{
+  const res = await fetch(`${JSON_API}${id}`,{
     method: 'PUT',
     headers:{
       'Content-type': 'application/json'
