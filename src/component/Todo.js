@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { JSON_API } from '../config/constants';
 
 
 const Todo = () => {
@@ -69,7 +70,7 @@ const Todo = () => {
 
   const addTodo = async (todo) => {
 
-    const response = await fetch('http://localhost:8000/todo/', {
+    const response = await fetch(JSON_API, {
       method:'POST',
       headers: {
         'Content-type': 'application/json'
@@ -86,7 +87,7 @@ const Todo = () => {
 
 // fectch todo data with specific id
 const fetchTodo = async (id) => {
-  const response = await fetch(`http://localhost:8000/todo/${id}`)
+  const response = await fetch(`${JSON_API}${id}`)
   const data = await response.json()
 
   return data
@@ -114,7 +115,7 @@ const handleComplete = async (id) => {
 };
 
  const handleDelete = async (id) =>{
-   await fetch (`http://localhost:8000/todo/${id}`,{
+   await fetch (`${JSON_API}${id}`,{
     method: 'DELETE'
   })
 
@@ -130,7 +131,7 @@ const handleClearCompleted = () => {
   console.log(ClearCompleted)
 
   ClearCompleted.forEach( async (todo) =>{
-    await fetch(`http://localhost:8000/todo/${todo.id}`,{
+    await fetch(`${JSON_API}${todo.id}`,{
     method: 'DELETE'}
   )
 
