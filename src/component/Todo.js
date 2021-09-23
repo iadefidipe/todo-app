@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
 
 const Todo = () => {
 
@@ -14,27 +16,37 @@ const Todo = () => {
 
 
   // fetch data on page load
+  // useEffect(() => {
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch('http://localhost:8000/todo')
+  //       if (!res.ok) throw new Error('Could not fetch data!')
+  //       const data = await res.json()
+  //       setTodos(data)
+
+  //     }
+  //     catch (err) {
+  //       alert(err.message)
+  //       console.error(err)
+  //     }
+  //   }
+
+  //   fetchData()
+
+  // }, []
+  // )
+
   useEffect(() => {
+    const getLocalTodos = localStorage.getItem("localTodos");
+    setTodos(JSON.parse(getLocalTodos));
+  }, []);
 
-    const fetchData = async () => {
-      try {
-        const res = await fetch('http://localhost:8000/todo')
-        if (!res.ok) throw new Error('Could not fetch data!')
-        const data = await res.json()
-        setTodos(data)
 
-      }
-      catch (err) {
-        alert(err.message)
-        console.error(err)
-      }
-    }
-
-    fetchData()
-
-  }, []
-  )
-
+  //TODO: Push todos state to localStorage
+  useEffect(() => {
+    localStorage.setItem("localTodos", JSON.stringify(todos));
+  });
 
  //TODO: Add && Update notification
  useEffect(() => {
@@ -109,24 +121,7 @@ const handleComplete = async (id) => {
   setTodos( todos.filter((todo) => todo.id !== id))
  }
 
-//  const handleClearCompleted = async () => {
-//   const ClearCompleted = todos.filter( (todo) => todo.completed === false)
 
-  
-
-  // const res = await fetch(`http://localhost:8000/todo/${}`,{
-  //   method: 'DELETE',
-  //   headers:{
-  //     'Content-type': 'application/json'
-  //   },
-  //   body: JSON.stringify(ClearCompleted)
-  // }
-  // )
-
-//   const data = await res.json()
-
-//   setTodos(data)
-// }
 
 const handleClearCompleted = () => {
 
@@ -144,11 +139,6 @@ const handleClearCompleted = () => {
   setTodos(todos.filter( (todo) => todo.completed === false ))
 }
 
-//  filters
-
-// const handleAll = () => {
-
-// }
 
 const handleAll = () => {
   document.querySelectorAll('.todo').forEach( (todoItem) => todoItem.style.display = 'flex')
@@ -194,7 +184,15 @@ const handleCompleted = () => {
           }} />
         </form>
 
-        <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete} />
+        <DragDropContext  > 
+        
+
+           
+           <TodoList data={todos} handleComplete = {handleComplete} handleDelete = {handleDelete}  />
+          
+
+          
+        </DragDropContext> 
 
         <TodoFilter handleActive ={handleActive} handleCompleted= {handleCompleted} handleAll= { handleAll} handleClearCompleted = {handleClearCompleted} todoLength = { todoLength} />
 
