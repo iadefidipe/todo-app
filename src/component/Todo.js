@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import TodoFilter from './TodoFilter';
 import TodoList from './TodoList';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { JSON_API } from '../config/constants';
+import { data } from "../data/data";
 
 
 const Todo = () => {
 
   const [text, setText] = useState('')
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(data);
   const [completed, setCompleted] = useState(false)
 
  
@@ -17,26 +17,6 @@ const Todo = () => {
 
 
   // fetch data on page load
-  // useEffect(() => {
-
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch('http://localhost:8000/todo')
-  //       if (!res.ok) throw new Error('Could not fetch data!')
-  //       const data = await res.json()
-  //       setTodos(data)
-
-  //     }
-  //     catch (err) {
-  //       alert(err.message)
-  //       console.error(err)
-  //     }
-  //   }
-
-  //   fetchData()
-
-  // }, []
-  // )
 
   useEffect(() => {
     const getLocalTodos = localStorage.getItem("localTodos");
@@ -61,28 +41,14 @@ const Todo = () => {
 //  handles onsubmit for the the todo-input section
   const handleSubmit = (e) => {
     e.preventDefault()
-    const todo = { text, completed }
-    addTodo(todo)
+    const todo = { 
+      id: new Date().getTime().toString(), text, completed }
+      setTodos([...todos, todo])
+      setText('') 
 
   }
 
-  // update database with new todo and it to state too
 
-  const addTodo = async (todo) => {
-
-    const response = await fetch(JSON_API, {
-      method:'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(todo)
-    })
-    
-    const data = await response.json()
-
-    setTodos([...todos, data])
-    setText('') 
-  }
 
 
 // fectch todo data with specific id
