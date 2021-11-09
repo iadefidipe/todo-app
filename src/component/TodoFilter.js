@@ -9,6 +9,7 @@ const TodoFilter = ({ todoLength, handleAll, handleActive, handleCompleted,  han
                 <h3 onClick = { () => handleActive() }> Active</h3>
                 <h3 onClick = { () => handleCompleted() }> Completed</h3>
             </div>
+            
             <p onClick = { () => handleClearCompleted() }> Clear completed</p>
         </div>
     )
