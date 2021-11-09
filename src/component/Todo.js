@@ -38,6 +38,7 @@ const Todo = () => {
   // }, []
   // )
 
+  // get data from local storage
   useEffect(() => {
     const getLocalTodos = localStorage.getItem("localTodos");
     setTodos(JSON.parse(getLocalTodos));
@@ -114,13 +115,14 @@ const handleComplete = async (id) => {
   
 };
 
- const handleDelete = async (id) =>{
+const handleDelete = async (id) =>{
+
    await fetch (`${JSON_API}${id}`,{
     method: 'DELETE'
   })
 
   setTodos( todos.filter((todo) => todo.id !== id))
- }
+}
 
 
 
