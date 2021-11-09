@@ -38,6 +38,7 @@ const Todo = () => {
   // }, []
   // )
 
+  // get data from local storage
   useEffect(() => {
     const getLocalTodos = localStorage.getItem("localTodos");
     setTodos(JSON.parse(getLocalTodos));
@@ -98,7 +99,7 @@ const handleComplete = async (id) => {
   const updatedTodo = { ...todoCompleted, completed: !todoCompleted.completed}
 
   
-  const res = await fetch(`http://localhost:8000/todo/${id}`,{
+  const res = await fetch(`${JSON_API}${id}`,{
     method: 'PUT',
     headers:{
       'Content-type': 'application/json'
@@ -114,13 +115,14 @@ const handleComplete = async (id) => {
   
 };
 
- const handleDelete = async (id) =>{
+const handleDelete = async (id) =>{
+
    await fetch (`${JSON_API}${id}`,{
     method: 'DELETE'
   })
 
   setTodos( todos.filter((todo) => todo.id !== id))
- }
+}
 
 
 
@@ -162,9 +164,7 @@ const handleActive = () => {
 }
 
 const handleCompleted = () => {
-
   filterTodoList('completed')
- 
 
 }
 

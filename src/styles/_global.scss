@@ -10,24 +10,28 @@ body {
   width: 100%;
   height: 100vh;
   background: var(--color-bg);
-  background-size: 100% 300px;
+  background-size: 100% 500px;
   background-repeat: no-repeat;
-  display: grid;
-  place-items: center;
   background-image: url(../asset/images/bg-desktop-dark.jpg);
   transition: background-image 500ms ease-in-out, background 500ms ease-in-out;
 
-  @include breakpoint-down(medium) {
+  @include breakpoint-down(mobile) {
     background-image: url(../asset/images/bg-mobile-dark.jpg);
-    background-size: 100% 200px;
+
   }
 }
 
 .main-container {
-  min-width: rem(540);
-
-  @include breakpoint-down(medium) {
-    min-width: rem(327);
+  margin: 0 20px;
+  height: 100%;
+}
+.container-wrap{
+  padding-top: rem(240);
+  max-width: rem(600);
+  margin: 0 auto;
+  @include breakpoint-down(mobile) {
+  padding-top: rem(140);
+    
   }
 }
 
@@ -82,7 +86,6 @@ input[type="checkbox"] {
 .todo-list {
   margin-top: rem(20);
   background-color: var(--color-list-bg);
-
   display: flex;
   flex-direction: column;
 }
@@ -90,12 +93,9 @@ input[type="checkbox"] {
 .todo {
   display: flex;
   padding: rem(20);
-
   align-items: center;
   justify-content: space-between;
-
   border-bottom: 1px solid var(--color-boder);
-
   label {
     color: var(--color-text);
   }
@@ -114,12 +114,14 @@ input[type="checkbox"] {
 
 .todo-filter {
   background: var(--color-list-bg);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr ;
   padding: rem(20);
   font-size: rem(14);
-
-
+  border-radius: 0 0 5px 5px;
+  &>p:last-of-type{
+    text-align: right;
+  }
   h3,p {
     cursor: pointer;
     color: var(--color-text);
@@ -135,7 +137,23 @@ input[type="checkbox"] {
   }
 
   .filter {
+    flex: 1;
     display: flex;
-    gap: rem(18);
+    justify-content: space-between;
+    gap: rem(10);
+  }
+
+  @include breakpoint-down(mobile) {
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 20px);
+   row-gap: rem(20);
+
+
+   &>div{
+    grid-column: 1/3;
+    grid-row: 2/3;
+    justify-self: center;
+  }
+   
   }
 }
