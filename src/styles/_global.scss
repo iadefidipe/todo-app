@@ -1,159 +1,156 @@
+// base
 body {
-  font-family: $font-jose;
-  font-size: rem(18);
-  color: var(--color-text);
-  width: 100vw;
-  height: 100vh;
+	font-family: $font-jose;
+	font-size: rem(18);
+	color: var(--color-text);
+	width: 100vw;
+	height: 100vh;
 }
 
 .App {
-  width: 100%;
-  height: 100vh;
-  background: var(--color-bg);
-  background-size: 100% 500px;
-  background-repeat: no-repeat;
-  background-image: url(../asset/images/bg-desktop-dark.jpg);
-  transition: background-image 500ms ease-in-out, background 500ms ease-in-out;
+	width: 100%;
+	height: 100vh;
+	background: var(--color-bg);
+	background-size: 100% 50%;
+	background-repeat: no-repeat;
+	background-image: url(../asset/images/bg-desktop-dark.jpg);
+	transition: background-image 500ms ease-in-out, background 500ms ease-in-out;
+	display: grid;
+	place-items: center;
+	place-content: center;
 
-  @include breakpoint-down(mobile) {
-    background-image: url(../asset/images/bg-mobile-dark.jpg);
-
-  }
+	@include breakpoint-down(mobile) {
+		background-image: url(../asset/images/bg-mobile-dark.jpg);
+	}
 }
 
+// containers
 .main-container {
-  margin: 0 20px;
-  height: 100%;
+	margin: 0 20px;
+	height: 100%;
+	max-width: rem(540);
 }
-.container-wrap{
-  padding-top: rem(240);
-  max-width: rem(600);
-  margin: 0 auto;
-  @include breakpoint-down(mobile) {
-  padding-top: rem(140);
-    
-  }
+.container-wrap {
+	min-width: 100%;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  min-width: rem(23);
-  min-height: rem(23);
-  background-color: transparent;
-  border: rem(0.5) solid hsla(0, 0%, 59%, 0.363);
-  border-radius: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+input[type='checkbox'] {
+	appearance: none;
+	-webkit-appearance: none;
+	min-width: rem(23);
+	min-height: rem(23);
+	background-color: transparent;
+	border: rem(0.5) solid hsla(0, 0%, 59%, 0.363);
+	border-radius: 100%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  &:checked {
-    transition: 0.5s ease-in-out;
-    background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+	&:checked {
+		transition: 0.5s ease-in-out;
+		background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
 
-    &::after {
-      transition: 0.5s ease-in-out;
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f00c";
-      font-size: rem(10);
-    }
-  }
+		&::after {
+			transition: 0.5s ease-in-out;
+			font-family: 'Font Awesome 5 Free';
+			font-weight: 900;
+			content: '\f00c';
+			font-size: rem(10);
+		}
+	}
 }
 
 .todo-input {
-  margin-top: rem(30);
-  background: var(--color-list-bg);
-  padding: rem(20);
-  border-radius: rem(5);
-  display: flex;
-  gap: rem(24);
-  align-items: center;
-  transition: background 500ms ease-in-out;
+	margin-top: rem(30);
+	background: var(--color-list-bg);
+	padding: rem(20);
+	border-radius: rem(5);
+	display: flex;
+	gap: rem(24);
+	align-items: center;
+	transition: background 500ms ease-in-out;
 
-  &-text {
-    width: 100%;
-  }
+	&-text {
+		width: 100%;
+	}
 }
 
 .todo-list {
-  margin-top: rem(20);
-  background-color: var(--color-list-bg);
-  display: flex;
-  flex-direction: column;
+	margin-top: rem(20);
+	background-color: var(--color-list-bg);
+	display: flex;
+	flex-direction: column;
 }
 
 .todo {
-  display: flex;
-  padding: rem(20);
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-boder);
-  label {
-    color: var(--color-text);
-  }
+	display: flex;
+	padding: rem(20);
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--color-boder);
+	label {
+		color: var(--color-text);
+	}
 
-  input[type="checkbox"]:checked ~ label {
-    text-decoration: line-through;
-    color: var(--color-text-deactive);
-  }
+	input[type='checkbox']:checked ~ label {
+		text-decoration: line-through;
+		color: var(--color-text-deactive);
+	}
 
-  &-item {
-    display: flex;
-    align-items: center;
-    gap: rem(24);
-  }
+	&-item {
+		display: flex;
+		align-items: center;
+		gap: rem(24);
+	}
 }
 
 .todo-filter {
-  background: var(--color-list-bg);
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr ;
-  padding: rem(20);
-  font-size: rem(14);
-  border-radius: 0 0 5px 5px;
-  &>p:last-of-type{
-    text-align: right;
-  }
-  h3,p {
-    cursor: pointer;
-    color: var(--color-text);
-  }
+	background: var(--color-list-bg);
+	display: grid;
+	grid-template-columns: 1fr 1.2fr 1fr;
+	padding: rem(20);
+	font-size: rem(14);
+	border-radius: 0 0 5px 5px;
+	& > p:last-of-type {
+		text-align: right;
+	}
+	h3,
+	p {
+		cursor: pointer;
+		color: var(--color-text);
+	}
 
+	h3:hover {
+		color: var(--color-text-hover);
+	}
 
-  h3:hover {
-    color: var(--color-text-hover);
-  }
+	h3:focus {
+		color: var(--color-text-active);
+	}
 
-  h3:focus {
-    color: var(--color-text-active);
-  }
+	.filter {
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+		gap: rem(10);
+	}
 
-  .filter {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    gap: rem(10);
-  }
+	@include breakpoint-down(mobile) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 20px);
+		row-gap: rem(20);
 
-  @include breakpoint-down(mobile) {
-   grid-template-columns: repeat(2, 1fr);
-   grid-template-rows: repeat(2, 20px);
-   row-gap: rem(20);
-
-
-   &>div{
-    grid-column: 1/3;
-    grid-row: 2/3;
-    justify-self: center;
-  }
-   
-  }
+		& > div {
+			grid-column: 1/3;
+			grid-row: 2/3;
+			justify-self: center;
+		}
+	}
 }
